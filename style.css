@@ -23,3 +23,7 @@ nav{
 .notes{
     list-style-type: none;
 }
+
+.notes li{
+    margin:10px;
+}
