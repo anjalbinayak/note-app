@@ -1,0 +1,25 @@
+:root{
+    --light: white;
+    --dark: black;
+    --purple: #14BDEB;
+    --dark-blue:#031927;
+
+}
+
+body{
+    padding:0;
+    margin:0;
+    background: var(--light);
+}
+
+nav{
+    height:70px;
+    width:100%;
+    padding:10px;
+    background:var(--dark-blue);
+    color:var(--light);
+}
+
+.notes{
+    list-style-type: none;
+}
