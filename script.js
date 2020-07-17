@@ -1,4 +1,6 @@
+renderNotes();
 let addNoteButton = document.querySelector('#add-note-button');
+let deleteNoteButtons = document.querySelectorAll('.delete-note');
 
 addNoteButton.addEventListener('click', function() {
 
@@ -24,6 +26,7 @@ addNoteButton.addEventListener('click', function() {
 
 
     localStorage.setItem('notes', JSON.stringify(notes));
+    $('.collapse').collapse('hide');
 
     renderNotes();
 
@@ -31,7 +34,22 @@ addNoteButton.addEventListener('click', function() {
     
 });
 
-renderNotes();
+function deleteNote(btn)
+{
+    let card = btn.closest('.card');
+        let noteId = card.getAttribute('data-id');
+       
+        let notes = getNotes();
+
+        notes = notes.filter(function(note){
+            return note.id !==  noteId;
+        });
+        
+
+        localStorage.setItem('notes', JSON.stringify(notes));
+        renderNotes();
+}
+
 function renderNotes()
 {
     let noteListContainer = document.querySelector('#note-list');
@@ -76,6 +94,7 @@ function renderNotes()
         cardDeleteButton.classList.add('delete-note');
         cardDeleteButton.classList.add('pull-right');
         cardDeleteButton.innerHTML = `<i class='fa fa-trash'></i>`;
+        cardDeleteButton.setAttribute('onclick', 'deleteNote(this)');
 
         cardHeader.appendChild(cardDeleteButton);
 
@@ -112,3 +131,9 @@ function generateId(){
     });
     return uuid;
 }
+
+function getNotes()
+{
+    return JSON.parse(localStorage.getItem('notes'));
+}
+
