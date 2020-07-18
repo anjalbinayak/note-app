@@ -2,6 +2,8 @@ renderNotes();
 let addNoteButton = document.querySelector('#add-note-button');
 let deleteNoteButtons = document.querySelectorAll('.delete-note');
 
+let editNoteButton = document.querySelector('#edit-note-button');
+
 addNoteButton.addEventListener('click', function() {
 
     let titleElm = document.querySelector('#note-title');
@@ -34,6 +36,33 @@ addNoteButton.addEventListener('click', function() {
     
 });
 
+editNoteButton.addEventListener('click', function(e){
+    let editNoteTitleElm = document.querySelector('#edit-note-title');
+    let editNoteBodyElm = document.querySelector('#edit-note-body');
+    let noteId = e.target.getAttribute('data-id');
+    let notes  =  getNotes();
+    console.log(noteId);
+    let newNoteTitle = editNoteTitleElm.value;
+    let newNoteBody = editNoteBodyElm.value;
+
+
+    let editedNote = notes.find(elm => elm.id == noteId);
+    editedNote.title = newNoteTitle;
+    editedNote.body = newNoteBody;
+
+    let indexOfObject = notes.findIndex(function(item){
+        return item.id == noteId;
+    })
+
+    notes[indexOfObject] = editedNote;
+
+    localStorage.setItem('notes', JSON.stringify(notes));
+    $('#edit-note-modal').modal('hide');
+    renderNotes();
+
+    
+});
+
 function deleteNote(btn)
 {
     let card = btn.closest('.card');
@@ -50,14 +79,7 @@ function deleteNote(btn)
         renderNotes();
 }
 
-function editNote(btn)
-{
-    let card = btn.closest('.card');
-    let noteId = card.getAttribute('data-id');
-       
-    let notes = getNotes();
 
-}
 
 
 function renderNotes()
@@ -121,7 +143,6 @@ function renderNotes()
         cardEditButton.classList.add('pull-right');
 
         cardEditButton.innerHTML = `<i class='fa fa-edit'></i>`;
-        cardEditButton.setAttribute('onclick', 'editNote(this)');
         cardEditButton.setAttribute('data-toggle','modal');
         cardEditButton.setAttribute('data-target','#edit-note-modal');
 
@@ -138,15 +159,6 @@ function renderNotes()
 
         return card;
 
-
-//         <div class="card">
-//   <div class="card-header">
-//     Featured
-//   </div>
-//   <div class="card-body">
-//     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-//   </div>
-// </div>
     } 
 
 }
@@ -187,7 +199,8 @@ $('#edit-note-modal').on('show.bs.modal', function (e) {
   modal.find('.modal-body #edit-note-title').val(noteTitle);
 
   modal.find('.modal-body #edit-note-body').val(noteBody);
+  modal.find('.modal-footer #edit-note-button').attr('data-id', noteId);
 
 
   
-  })
+  });
