@@ -12,7 +12,7 @@
   </p>
 
   <p align="center">
-    <a href="https://binayak.notes/note-app">View App</a>
+    <a href="https://binayak.codes/note-app">View App</a>
     ·
     <a href="https://github.com/anjalbinayak/note-app/issues">Report Bug</a>
     ·
