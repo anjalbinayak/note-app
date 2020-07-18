@@ -41,7 +41,6 @@ editNoteButton.addEventListener('click', function(e){
     let editNoteBodyElm = document.querySelector('#edit-note-body');
     let noteId = e.target.getAttribute('data-id');
     let notes  =  getNotes();
-    console.log(noteId);
     let newNoteTitle = editNoteTitleElm.value;
     let newNoteBody = editNoteBodyElm.value;
 
