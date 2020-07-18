@@ -27,3 +27,11 @@ nav{
 .notes li{
     margin:10px;
 }
+
+.card .btn{
+    transition:0.1s;
+    opacity:0;
+}
+.card:hover .btn{
+    opacity:1;
+}

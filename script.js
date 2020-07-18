@@ -50,6 +50,16 @@ function deleteNote(btn)
         renderNotes();
 }
 
+function editNote(btn)
+{
+    let card = btn.closest('.card');
+    let noteId = card.getAttribute('data-id');
+       
+    let notes = getNotes();
+
+}
+
+
 function renderNotes()
 {
     let noteListContainer = document.querySelector('#note-list');
@@ -88,15 +98,34 @@ function renderNotes()
         let cardHeader = document.createElement('div');
         cardHeader.classList.add('card-header');
 
+            // delete button
         let cardDeleteButton = document.createElement('button');
         cardDeleteButton.classList.add('btn');
         cardDeleteButton.classList.add('btn-danger');
+        cardDeleteButton.classList.add('btn-sm');
         cardDeleteButton.classList.add('delete-note');
         cardDeleteButton.classList.add('pull-right');
         cardDeleteButton.innerHTML = `<i class='fa fa-trash'></i>`;
         cardDeleteButton.setAttribute('onclick', 'deleteNote(this)');
 
         cardHeader.appendChild(cardDeleteButton);
+
+        // edit button
+        let cardEditButton = document.createElement('button');
+    
+        cardEditButton.classList.add('btn');
+        cardEditButton.classList.add('btn-primary');
+        cardEditButton.classList.add('btn-sm');
+
+        cardEditButton.classList.add('edit-note');
+        cardEditButton.classList.add('pull-right');
+
+        cardEditButton.innerHTML = `<i class='fa fa-edit'></i>`;
+        cardEditButton.setAttribute('onclick', 'editNote(this)');
+        cardEditButton.setAttribute('data-toggle','modal');
+        cardEditButton.setAttribute('data-target','#edit-note-modal');
+
+        cardHeader.appendChild(cardEditButton);
 
         let cardBody = document.createElement('div');
         cardBody.classList.add('card-body');
@@ -137,3 +166,28 @@ function getNotes()
     return JSON.parse(localStorage.getItem('notes'));
 }
 
+function getNote(noteId)
+{
+    let notes  = getNotes();
+    return notes.find((item) => item.id == noteId );
+}
+
+
+$('#edit-note-modal').on('show.bs.modal', function (e) {
+  let button = e.relatedTarget;
+
+  card = button.closest('.card');
+  let modal = $(this);
+  let noteId = card.getAttribute('data-id');
+  
+  let note = getNote(noteId);
+  let noteTitle = note.title;
+  let noteBody = note.body;
+  
+  modal.find('.modal-body #edit-note-title').val(noteTitle);
+
+  modal.find('.modal-body #edit-note-body').val(noteBody);
+
+
+  
+  })
