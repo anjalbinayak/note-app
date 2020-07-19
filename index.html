@@ -42,13 +42,7 @@
            </div>
           </div>
         </div>
-    
-           
-                
-        
-    
-    
-    
+
         <main>
             <div class="jumbotron">
                 <ul class='notes' id='note-list'>
@@ -91,4 +85,15 @@
 
 </body>
 <script src='./console.js'></script>
+<script>
+  
+  if('serviceWorker' in navigator)
+  {
+    navigator.serviceWorker.register('serviceWorker.js')
+    .then(sw => {
+      console.log('Service Worker Registered', sw);
+    });
+  }
+
+</script>
 </html>
