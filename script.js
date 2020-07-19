@@ -124,6 +124,7 @@ function renderNotes()
         cardDeleteButton.classList.add('btn');
         cardDeleteButton.classList.add('btn-danger');
         cardDeleteButton.classList.add('btn-sm');
+        cardDeleteButton.classList.add('note-action-btn');
         cardDeleteButton.classList.add('delete-note');
         cardDeleteButton.classList.add('pull-right');
         cardDeleteButton.innerHTML = `<i class='fa fa-trash'></i>`;
@@ -137,6 +138,8 @@ function renderNotes()
         cardEditButton.classList.add('btn');
         cardEditButton.classList.add('btn-primary');
         cardEditButton.classList.add('btn-sm');
+        cardEditButton.classList.add('note-action-btn');
+
 
         cardEditButton.classList.add('edit-note');
         cardEditButton.classList.add('pull-right');

@@ -28,10 +28,11 @@ nav{
     margin:10px;
 }
 
-.card .btn{
+.card .note-action-btn{
     transition:0.1s;
+    margin:5px;
     opacity:0;
 }
-.card:hover .btn{
+.card:hover .note-action-btn{
     opacity:1;
 }
