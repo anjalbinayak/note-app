@@ -1,9 +1,10 @@
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('noteapp').then(function(cache){
-                
+            
             return cache.addAll([
                 '/note-app',
+                '/note-app/',
                 '/note-app/index.html',
                 '/note-app/style.css',
                 '/note-app/script.js',
