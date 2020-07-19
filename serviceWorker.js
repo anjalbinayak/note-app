@@ -5,7 +5,7 @@ self.addEventListener('install', (event) => {
         caches.open('note-app').then(function(cache){
                 
             return cache.addAll([
-                '/',
+                'https://binayak.codes/note-app/',
                 '/index.html',
                 '/style.css',
                 '/script.js',
