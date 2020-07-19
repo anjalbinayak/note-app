@@ -1,5 +1,3 @@
-
-
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('note-app').then(function(cache){
