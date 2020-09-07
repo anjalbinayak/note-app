@@ -96,7 +96,7 @@ function renderNotes()
 
     let notes  = JSON.parse(localStorage.getItem('notes'));
 
-    if(!notes)
+    if(!notes || notes.length ==0)
     {
         noteListContainer.innerHTML = 'No Notes Available';
         return;
