@@ -18,7 +18,9 @@ addNoteButton.addEventListener('click', function() {
         return;
     }
 
-    if(title.trim=='' || body.trim==''){
+    if(title == false && body == false){
+        bodyElm.value='';
+        titleElm.value='';
         $('.collapse').collapse('hide');
         return;
     }
@@ -61,7 +63,7 @@ editNoteButton.addEventListener('click', function(e){
         return;
     }
 
-    if(newNoteBody.trim=='' || newNoteTitle.trim==''){
+    if(newNoteBody == false && newNoteTitle == false){
         showEditErrorMessage('<i class="fa fa-exclamation-triangle"></i> You need to alteast have a title or body');
         return;
     }
