@@ -51,7 +51,8 @@ editNoteButton.addEventListener('click', function(e){
     let newNoteBody = editNoteBodyElm.value;
 
     if(!(newNoteTitle || newNoteBody)){
-        $('#edit-note-modal').modal('hide');
+
+        document.querySelector('#error-message').innerHTML = '<i class="fa fa-exclamation-triangle"></i> You need to alteast have a title or body';
         return;
     }
 
@@ -67,6 +68,7 @@ editNoteButton.addEventListener('click', function(e){
     notes[indexOfObject] = editedNote;
 
     localStorage.setItem('notes', JSON.stringify(notes));
+    document.querySelector('#error-message').innerHTML = '';
     $('#edit-note-modal').modal('hide');
     renderNotes();
 
