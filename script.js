@@ -64,6 +64,13 @@ editNoteButton.addEventListener('click', function(e){
 
 function deleteNote(btn)
 {
+    if(!confirm("Are you sure want to delete this note")){
+        return;
+    }
+    let CONFIRM_TEXT = "CONFIRM";
+    let confirmation = prompt("Type CONFIRM to delete this");
+    if(CONFIRM_TEXT != confirmation) return;
+
     let card = btn.closest('.card');
         let noteId = card.getAttribute('data-id');
        
