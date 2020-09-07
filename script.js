@@ -268,6 +268,14 @@ $('#edit-note-modal').on('show.bs.modal', function (e) {
   
   });
 
+  $('#edit-note-modal').on('hide.bs.modal', function (e) {
+
+    document.querySelector("#error-message").innerHTML = '';
+  
+  
+    
+    });
+
 
 
 
