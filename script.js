@@ -18,6 +18,11 @@ addNoteButton.addEventListener('click', function() {
         return;
     }
 
+    if(title.trim=='' || body.trim==''){
+        $('.collapse').collapse('hide');
+        return;
+    }
+
     let date = new Date();
     let id = generateId();
     let note = {
@@ -52,7 +57,12 @@ editNoteButton.addEventListener('click', function(e){
 
     if(!(newNoteTitle || newNoteBody)){
 
-        document.querySelector('#error-message').innerHTML = '<i class="fa fa-exclamation-triangle"></i> You need to alteast have a title or body';
+        showEditErrorMessage('<i class="fa fa-exclamation-triangle"></i> You need to alteast have a title or body');
+        return;
+    }
+
+    if(newNoteBody.trim=='' || newNoteTitle.trim==''){
+        showEditErrorMessage('<i class="fa fa-exclamation-triangle"></i> You need to alteast have a title or body');
         return;
     }
 
@@ -68,7 +78,7 @@ editNoteButton.addEventListener('click', function(e){
     notes[indexOfObject] = editedNote;
 
     localStorage.setItem('notes', JSON.stringify(notes));
-    document.querySelector('#error-message').innerHTML = '';
+    clearEditErrorMessage();
     $('#edit-note-modal').modal('hide');
     renderNotes();
 
@@ -270,11 +280,20 @@ $('#edit-note-modal').on('show.bs.modal', function (e) {
 
   $('#edit-note-modal').on('hide.bs.modal', function (e) {
 
-    document.querySelector("#error-message").innerHTML = '';
+    clearEditErrorMessage();
   
   
     
     });
+
+
+  function showEditErrorMessage(message){
+      document.querySelector("#error-message").innerHTML = message;
+  }
+
+  function clearEditErrorMessage(){
+      document.querySelector("#error-message").innerHTML = '';
+  }
 
 
 
