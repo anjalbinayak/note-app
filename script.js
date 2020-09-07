@@ -108,7 +108,7 @@ function renderNotes()
 
         card.setAttribute('data-id', note.id);
 
-        card.querySelector('.card-header').innerHTML += note.title;
+        card.querySelector('.card-header').innerHTML += note.title + `                           <small class="text-muted timeago" title="${new Date(note.date)}"></small>`;
         card.querySelector('.card-text').innerHTML = note.body;
         li.appendChild(card);
 
