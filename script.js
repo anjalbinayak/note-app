@@ -8,9 +8,17 @@ addNoteButton.addEventListener('click', function() {
 
     let titleElm = document.querySelector('#note-title');
     let title = titleElm.value;
+    
 
     let bodyElm = document.querySelector('#note-body');
     let body = bodyElm.value;
+
+    if(!(title || body)) {
+        console.log(!!body);
+        console.log(!!title);
+        $('.collapse').collapse('hide');
+        return;
+    }
 
     let date = new Date();
     let id = generateId();
