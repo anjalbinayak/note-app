@@ -14,8 +14,6 @@ addNoteButton.addEventListener('click', function() {
     let body = bodyElm.value;
 
     if(!(title || body)) {
-        console.log(!!body);
-        console.log(!!title);
         $('.collapse').collapse('hide');
         return;
     }
@@ -51,6 +49,11 @@ editNoteButton.addEventListener('click', function(e){
     let notes  =  getNotes();
     let newNoteTitle = editNoteTitleElm.value;
     let newNoteBody = editNoteBodyElm.value;
+
+    if(!(newNoteTitle || newNoteBody)){
+        $('#edit-note-modal').modal('hide');
+        return;
+    }
 
 
     let editedNote = notes.find(elm => elm.id == noteId);
