@@ -98,7 +98,7 @@ function renderNotes()
 
     if(!notes || notes.length ==0)
     {
-        noteListContainer.innerHTML = 'No Notes Available';
+        noteListContainer.innerHTML = '<i class="fa fa-exclamation-triangle"></i> No Notes Available';
         return;
     }
     
